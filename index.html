@@ -70,12 +70,27 @@
                 <img :src="item.src" :alt="item.title">
               </template>
               <template v-else-if="item.type === 'video'">
-                <video v-if="item.src.endsWith('.mp4') || item.src.endsWith('.webm')" :src="item.src" controls playsinline></video>
-                <iframe v-else :src="item.src" :title="item.title" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video
+                  v-if="item.src.endsWith('.mp4') || item.src.endsWith('.webm')"
+                  :src="item.src"
+                  controls
+                  playsinline
+                  preload="metadata"
+                  @play="pauseGallery"
+                  @pause="startGallery"
+                  @ended="startGallery"
+                ></video>
+                <iframe
+                  v-else
+                  :src="item.src"
+                  :title="item.title"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </template>
-              <div class="gallery-caption">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+              <div v-if="item.title || item.description" class="gallery-caption">
+                <h3 v-if="item.title">{{ item.title }}</h3>
+                <p v-if="item.description">{{ item.description }}</p>
               </div>
             </div>
             <div class="gallery-controls">
@@ -159,7 +174,6 @@
             <div class="section-kicker">Our Team</div>
             <h2 class="section-title">Faculty</h2>
           </div>
-          <div class="section-desc">Meet our teaching team. Faculty details can be edited easily in <code>app.js</code>.</div>
         </div>
         <div class="faculty-grid">
           <article v-for="member in faculty" :key="member.name" class="card faculty-card">

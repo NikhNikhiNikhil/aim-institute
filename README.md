@@ -9,7 +9,9 @@ A responsive, client-only tutorial management website designed for free hosting 
 - Institution logo in the header
 - Large institution banner / hero section
 - Auto-changing gallery with fade transitions
-- Image and video gallery support
+- Responsive image and video gallery
+- Gallery preserves the complete original image/video frame (no forced cropping)
+- Direct MP4 video controls with automatic slideshow pause while playing
 - Courses offered section
 - Responsive study-material browser:
   - 6th Standard → 7th → 8th → 9th → 10th → 1st PUC → 2nd PUC
@@ -29,11 +31,14 @@ tutorial-management-vue/
 ├── app.js
 ├── README.md
 └── assets/
-    ├── logo.svg
-    ├── banner.svg
-    ├── gallery-1.svg
-    ├── gallery-2.svg
-    └── gallery-3.svg
+    ├── logo.png
+    ├── banner.png
+    ├── image1.jpeg
+    ├── image2.jpeg
+    ├── image3.jpeg
+    ├── image4.jpeg
+    ├── image5.jpeg
+    └── video1.mp4
 ```
 
 ## 1. Edit institution details

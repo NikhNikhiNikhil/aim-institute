@@ -31,31 +31,45 @@ const gallery = [
   {
     id: 1,
     type: "image",
-    src: "assets/gallery-1.svg",
-    title: "Interactive Classrooms",
-    description: "Learning through discussion, examples and practice."
+    src: "assets/image1.jpeg",
+    title: "",
+    description: ""
   },
   {
     id: 2,
     type: "image",
-    src: "assets/gallery-2.svg",
-    title: "Annual Achievement Day",
-    description: "Celebrating consistent effort and academic progress."
+    src: "assets/image2.jpeg",
+    title: "",
+    description: ""
   },
   {
     id: 3,
     type: "image",
-    src: "assets/gallery-3.svg",
-    title: "Science & Mathematics",
-    description: "Concept-focused sessions with practical problem solving."
+    src: "assets/image3.jpeg",
+    title: "",
+    description: ""
   },
-  // {
-  //   id: 4,
-  //   type: "video",
-  //   src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  //   title: "Sample Video",
-  //   description: "Replace this with your institution's YouTube video or MP4 URL."
-  // }
+  {
+    id: 4,
+    type: "image",
+    src: "assets/image4.jpeg",
+    title: "",
+    description: ""
+  },
+  {
+    id: 5,
+    type: "image",
+    src: "assets/image5.jpeg",
+    title: "",
+    description: ""
+  },
+  {
+     id: 6,
+     type: "video",
+     src: "assets/video1.mp4",
+     title: "",
+     description: ""
+  }
 ];
 
 const faculty = [
