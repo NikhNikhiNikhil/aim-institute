@@ -79,7 +79,6 @@ const faculty = [
     subject: "Mathematics",
     qualification: "M.Sc., B.Ed., 18+ years teaching experience",
     bio: "Specializes in competitive problem solving and board examination preparation.",
-    email: "vinaykumar@gmail.com",
     photo: "assets/faculty-1.jpg"
   },
   {
@@ -88,7 +87,6 @@ const faculty = [
     subject: "Science",
     qualification: "BSC,PGDMCA 2+ years teaching experience",
     bio: "Focuses on clear conceptual explanations and exam-oriented revision.",
-    email: "sowmya@example.com",
     photo: "assets/faculty-2.jpg"
   }
 ];
