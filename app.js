@@ -14,12 +14,12 @@ const { createApp, computed, ref, onMounted, onUnmounted } = Vue;
 const site = {
   name: "Akkamahadevi Institute Of Mathematical Sciences",
   tagline: "Enhancing the abilities of students",
-  contact: "+91 9900240025",
+  contact: "+91 9900240027",
   email: "info@example.com",
-  whatsapp: "919900240025",
+  whatsapp: "919900240027",
   facebook: "https://www.facebook.com/",
-  instagram: "https://www.instagram.com/",
-  youtube: "https://www.youtube.com/",
+  instagram: "https://www.instagram.com/aim.akkamahadeviinstitute?utm_source=qr&stkn=dnNwdXUwNjh4cDhk",
+  youtube: "https://youtube.com/@vinaysiddalingappa-h9g?si=Ji_tKgT3xhoUl2jb",
   logo: "assets/logo.png",
   banner: "assets/banner.png",
   heroEyebrow: "Trusted Tutorial Centre",
@@ -98,8 +98,8 @@ const locations = [
     name: "Mysuru Branch",
     area: "JSS Layout, Mysuru",
     address: "#18, 4th Block",
-    phone: "+91 99002 40025",
-    whatsapp: "919900240025",
+    phone: "+91 99002 40027",
+    whatsapp: "919900240027",
     mapUrl: "https://maps.app.goo.gl/iKkvJ3CZz1J5TdFY6?g_st=ac"
   },
   {
