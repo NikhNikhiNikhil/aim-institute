@@ -303,5 +303,5 @@
 }
 @media (max-width: 680px) {
   .faculty-grid, .locations-grid { grid-template-columns:1fr; }
-  .faculty-photo-wrap { aspect-ratio: 16 / 10; }
+  .faculty-photo-wrap { aspect-ratio: 16 / 16; }
 }
