@@ -71,7 +71,7 @@
     }
     .hero h1 { font-size: clamp(34px, 6vw, 62px); line-height:1.02; margin: 18px 0 16px; letter-spacing:-.055em; }
     .hero p { max-width: 650px; color:#dbeafe; font-size:17px; line-height:1.7; margin:0; }
-    .hero-actions { margin-top: 28px; display:flex; gap:12px; flex-wrap:wrap; }
+    .hero-actions { margin-top: 28px; display:flex; gap:12px; flex-:wrap; }
     .btn {
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding: 12px 17px; border-radius:12px; border:1px solid transparent; font-weight:700;
@@ -261,7 +261,7 @@
 }
 .faculty-card { overflow:hidden; }
 .faculty-photo-wrap {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 3;
   background:linear-gradient(135deg,#dbeafe,#e0f2fe);
   overflow:hidden;
 }
