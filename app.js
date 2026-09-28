@@ -89,7 +89,7 @@ const faculty = [
     qualification: "BSC,PGDMCA 2+ years teaching experience",
     bio: "Focuses on clear conceptual explanations and exam-oriented revision.",
     email: "sowmya@example.com",
-    photo: "assets/faculty-2.svg"
+    photo: "assets/faculty-2.jpg"
   }
 ];
 
