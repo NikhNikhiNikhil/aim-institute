@@ -15,7 +15,7 @@ const site = {
   name: "Akkamahadevi Institute Of Mathematical Sciences",
   tagline: "Enhancing the abilities of students",
   contact: "+91 9900240027",
-  email: "info@example.com",
+  email: "aim.akkamahadeviinstitute@gmail.com",
   whatsapp: "919900240027",
   facebook: "https://www.facebook.com/",
   instagram: "https://www.instagram.com/aim.akkamahadeviinstitute?utm_source=qr&stkn=dnNwdXUwNjh4cDhk",
