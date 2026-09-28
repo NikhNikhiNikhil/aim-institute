@@ -77,7 +77,7 @@ const faculty = [
     name: "Vinay Kumar",
     role: "Senior Faculty – Mathematics",
     subject: "Mathematics",
-    qualification: "M.Sc., 18+ years teaching experience",
+    qualification: "M.Sc., B.Ed., 18+ years teaching experience",
     bio: "Specializes in competitive problem solving and board examination preparation.",
     email: "vinaykumar@gmail.com",
     photo: "assets/faculty-1.svg"
@@ -86,7 +86,7 @@ const faculty = [
     name: "Ms. Sowmya M",
     role: "Faculty – Science",
     subject: "Science",
-    qualification: "2+ years teaching experience",
+    qualification: "BSC,PGDMCA 2+ years teaching experience",
     bio: "Focuses on clear conceptual explanations and exam-oriented revision.",
     email: "sowmya@example.com",
     photo: "assets/faculty-2.svg"
