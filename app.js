@@ -80,7 +80,7 @@ const faculty = [
     qualification: "M.Sc., B.Ed., 18+ years teaching experience",
     bio: "Specializes in competitive problem solving and board examination preparation.",
     email: "vinaykumar@gmail.com",
-    photo: "assets/faculty-1.svg"
+    photo: "assets/faculty-1.jpg"
   },
   {
     name: "Ms. Sowmya M",
