@@ -191,7 +191,7 @@
       .nav { display:none; }
       .menu-btn { display:block; }
       .brand-inner { min-height:70px; }
-      .hero-banner { min-height:420px; }
+      .hero-banner { height:90vh;margin: 0px 5px;background: linear-gradient(120deg, #172554, #2563eb 55%, #0ea5e9); }
       .gallery-stage { aspect-ratio: 4/3; min-height:320px; }
       .materials-layout { grid-template-columns:1fr; }
       .class-tabs { border-right:0; border-bottom:1px solid var(--line); display:flex; overflow-x:auto; gap:5px; }
