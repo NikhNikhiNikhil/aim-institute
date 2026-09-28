@@ -52,13 +52,15 @@
     .menu-btn { display:none; border:0; background:var(--soft); padding:9px 11px; border-radius:10px; }
 
     .hero-banner {
-      position: relative; overflow: hidden; min-height: 350px;
+      position: relative; overflow: hidden; height: 90vh;margin: 0px 5px;
       background: linear-gradient(120deg, #172554, #2563eb 55%, #0ea5e9);
-      color: rgb(10, 10, 10);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
     }
     .hero-banner::before {
       content:""; position:absolute; inset:0;
-      background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,.16) 0 2px, transparent 3px);
       background-size: 34px 34px; opacity:.5;
     }
     .hero-content { position:relative; z-index:1; padding: 70px 0; max-width: 720px; }
