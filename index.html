@@ -59,46 +59,59 @@
       <div class="container">
         <div class="section-head">
           <div>
+            <div class="section-kicker">Moments & Memories</div>
             <h2 class="section-title">Gallery</h2>
           </div>
         </div>
 
-        <div class="gallery-shell" @mouseenter="pauseGallery" @mouseleave="startGallery">
-          <div class="gallery-stage">
-            <div v-for="(item, index) in gallery" :key="item.id" class="gallery-slide" :class="{active: index === activeSlide}">
-              <template v-if="item.type === 'image'">
-                <img :src="item.src" :alt="item.title">
-              </template>
-              <template v-else-if="item.type === 'video'">
-                <video
-                  v-if="item.src.endsWith('.mp4') || item.src.endsWith('.webm')"
-                  :src="item.src"
-                  controls
-                  playsinline
-                  preload="metadata"
-                  @play="pauseGallery"
-                  @pause="startGallery"
-                  @ended="startGallery"
-                ></video>
-                <iframe
-                  v-else
-                  :src="item.src"
-                  :title="item.title"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </template>
-              <div v-if="item.title || item.description" class="gallery-caption">
-                <h3 v-if="item.title">{{ item.title }}</h3>
-                <p v-if="item.description">{{ item.description }}</p>
+        <div class="gallery-section-card">
+          <div class="gallery-section-head">
+            <div>
+              <h3>📸 Images</h3>
+              <p>Photos from AIM classrooms, activities and events.</p>
+            </div>
+          </div>
+          <div class="gallery-shell" @mouseenter="pauseImageGallery" @mouseleave="startImageGallery">
+            <div class="gallery-stage">
+              <div v-for="(item, index) in galleryImages" :key="item.id" class="gallery-slide" :class="{active: index === activeImageSlide}">
+                <img :src="item.src" :alt="item.title || 'AIM gallery image'">
+                <div v-if="item.title || item.description" class="gallery-caption">
+                  <h3 v-if="item.title">{{ item.title }}</h3>
+                  <p v-if="item.description">{{ item.description }}</p>
+                </div>
+              </div>
+              <div v-if="galleryImages.length > 1" class="gallery-controls">
+                <button class="gallery-arrow" @click="previousImageSlide" aria-label="Previous image">‹</button>
+                <button class="gallery-arrow" @click="nextImageSlide" aria-label="Next image">›</button>
+              </div>
+              <div v-if="galleryImages.length > 1" class="dots">
+                <button v-for="(item,index) in galleryImages" :key="item.id" class="dot" :class="{active:index===activeImageSlide}" @click="goToImageSlide(index)" :aria-label="'Go to image '+(index+1)"></button>
               </div>
             </div>
-            <div class="gallery-controls">
-              <button class="gallery-arrow" @click="previousSlide" aria-label="Previous slide">‹</button>
-              <button class="gallery-arrow" @click="nextSlide" aria-label="Next slide">›</button>
+          </div>
+        </div>
+
+        <div class="gallery-section-card video-gallery-section">
+          <div class="gallery-section-head">
+            <div>
+              <h3>🎬 Videos</h3>
+              <p>Watch videos from AIM.</p>
             </div>
-            <div class="dots">
-              <button v-for="(item,index) in gallery" :key="item.id" class="dot" :class="{active:index===activeSlide}" @click="goToSlide(index)" :aria-label="'Go to slide '+(index+1)"></button>
+          </div>
+          <div v-if="galleryVideos.length" class="video-grid">
+            <article v-for="video in galleryVideos" :key="video.id" class="video-card">
+              <video :src="video.src" controls playsinline preload="metadata"></video>
+              <div v-if="video.title || video.description" class="video-card-body">
+                <h4 v-if="video.title">{{ video.title }}</h4>
+                <p v-if="video.description">{{ video.description }}</p>
+              </div>
+            </article>
+          </div>
+          <div v-else class="coming-soon-widget compact-coming-soon">
+            <div class="coming-soon-emoji">🎬</div>
+            <div>
+              <strong>Videos coming soon</strong>
+              <p>New AIM videos will be added here.</p>
             </div>
           </div>
         </div>
@@ -150,16 +163,37 @@
                   </button>
                 </div>
 
-                <div v-if="selectedSubject && materialsForSelectedSubject.length" class="material-links">
-                  <a v-for="material in materialsForSelectedSubject" :key="material.name" class="material-link" :href="material.url" target="_blank" rel="noopener noreferrer">
-                    <div>
-                      <div class="material-name">{{ material.name }}</div>
-                      <div class="material-type">{{ material.type }}</div>
-                    </div>
-                    <span class="open-link">Open Drive ↗</span>
-                  </a>
+                <div v-if="materialsLoading" class="materials-state">
+                  <div class="loading-spinner"></div>
+                  <strong>Loading materials…</strong>
+                  <p>Fetching the latest study materials.</p>
                 </div>
-                <div v-else class="empty">Choose a subject to see its study-material links.</div>
+
+                <div v-else-if="materialsError" class="materials-state error-state">
+                  <div class="coming-soon-emoji">⚠️</div>
+                  <strong>Could not load materials</strong>
+                  <p>{{ materialsError }}</p>
+                  <button class="retry-btn" @click="fetchMaterials">Try Again</button>
+                </div>
+
+                <div v-else-if="selectedSubject && materialsForSelectedSubject.length" class="material-links">
+                  <div v-for="material in materialsForSelectedSubject" :key="material.name + material.url + material.fileId" class="material-link">
+                    <div class="material-main">
+                      <div class="material-name">{{ material.name }}</div>
+                      <div class="material-type">{{ material.fileId ? 'Study material • Download available' : 'Study material' }}</div>
+                    </div>
+                    <div class="material-actions">
+                      <a v-if="material.url" class="open-link" :href="material.url" target="_blank" rel="noopener noreferrer">Open ↗</a>
+                      <a v-if="material.fileId" class="download-link" :href="downloadUrl(material)" target="_blank" rel="noopener noreferrer">⬇ Download</a>
+                    </div>
+                  </div>
+                </div>
+                <div v-else-if="selectedSubject" class="coming-soon-widget">
+                  <div class="coming-soon-emoji">📚</div>
+                  <strong>Coming Soon</strong>
+                  <p>Study materials for {{ selectedSubject }} are being prepared.</p>
+                </div>
+                <div v-else class="empty">Choose a subject to load its latest study-material links.</div>
               </div>
             </div>
           </div>

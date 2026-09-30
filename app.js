@@ -27,50 +27,31 @@ const site = {
   heroText: "A modern learning hub for students from 6th standard to 2nd PUC, with courses, classroom moments and easy access to study materials."
 };
 
-const gallery = [
-  {
-    id: 1,
-    type: "image",
-    src: "assets/image1.jpeg",
-    title: "",
-    description: ""
-  },
-  {
-    id: 2,
-    type: "image",
-    src: "assets/image2.jpeg",
-    title: "",
-    description: ""
-  },
-  {
-    id: 3,
-    type: "image",
-    src: "assets/image3.jpeg",
-    title: "",
-    description: ""
-  },
-  {
-    id: 4,
-    type: "image",
-    src: "assets/image4.jpeg",
-    title: "",
-    description: ""
-  },
-  {
-    id: 5,
-    type: "image",
-    src: "assets/image5.jpeg",
-    title: "",
-    description: ""
-  },
-  {
-     id: 6,
-     type: "video",
-     src: "assets/video1.mp4",
-     title: "",
-     description: ""
-  }
+const galleryImages = [
+  { id: 1, src: "assets/image1.jpeg", title: "", description: "" },
+  { id: 2, src: "assets/image2.jpeg", title: "", description: "" },
+  { id: 3, src: "assets/image3.jpeg", title: "", description: "" },
+  { id: 4, src: "assets/image4.jpeg", title: "", description: "" },
+  { id: 5, src: "assets/image5.jpeg", title: "", description: "" }
 ];
+
+const galleryVideos = [
+  { id: 1, src: "assets/video1.mp4", title: "", description: "" }
+];
+
+const MATERIALS_API = "https://script.google.com/macros/s/AKfycbwJlc1GICnCYIpOrwvO66VEZcWGInuNu2oGBRNx6_O0i1h-wIO2BoirGQV0e8mhalI/exec";
+
+// Change only the apiClass value if your Google Sheet uses a different class name.
+const classApiValues = {
+  "6th Standard": "6",
+  "7th Standard": "7",
+  "8th Standard": "8",
+  "9th Standard": "9",
+  "10th Standard": "10",
+  "1st PUC": "1 PUC",
+  "2nd PUC": "2 PUC"
+};
+
 
 const faculty = [
   {
@@ -118,123 +99,30 @@ const courses = [
 ];
 
 const classes = [
-  {
-    name: "6th Standard",
-    subjects: [
-      { name: "Mathematics", materials: [
-        { name: "Chapter 1 Notes", type: "PDF / Drive", url: "https://drive.google.com/" },
-        { name: "Practice Worksheet", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]},
-      { name: "Science", materials: [
-        { name: "Science Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "English", materials: [
-        { name: "Grammar Practice", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "7th Standard",
-    subjects: [
-      { name: "Mathematics", materials: [
-        { name: "Mathematics Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Science", materials: [
-        { name: "Science Materials", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]},
-      { name: "English", materials: [
-        { name: "English Materials", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "8th Standard",
-    subjects: [
-      { name: "Mathematics", materials: [
-        { name: "Maths Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Science", materials: [
-        { name: "Science Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Social Science", materials: [
-        { name: "Social Science Notes", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "9th Standard",
-    subjects: [
-      { name: "Mathematics", materials: [
-        { name: "Maths Revision Pack", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Science", materials: [
-        { name: "Science Revision Pack", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Social Science", materials: [
-        { name: "Social Science Pack", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "10th Standard",
-    subjects: [
-      { name: "Mathematics", materials: [
-        { name: "Board Revision Materials", type: "PDF / Drive", url: "https://drive.google.com/" },
-        { name: "Previous Question Papers", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]},
-      { name: "Science", materials: [
-        { name: "Science Board Pack", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]},
-      { name: "English", materials: [
-        { name: "English Revision", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "1st PUC",
-    subjects: [
-      { name: "Physics", materials: [
-        { name: "Physics Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Chemistry", materials: [
-        { name: "Chemistry Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Mathematics", materials: [
-        { name: "Mathematics Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Biology", materials: [
-        { name: "Biology Notes", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]}
-    ]
-  },
-  {
-    name: "2nd PUC",
-    subjects: [
-      { name: "Physics", materials: [
-        { name: "Physics Board Revision", type: "PDF / Drive", url: "https://drive.google.com/" },
-        { name: "Previous Question Papers", type: "Drive Folder", url: "https://drive.google.com/" }
-      ]},
-      { name: "Chemistry", materials: [
-        { name: "Chemistry Board Revision", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Mathematics", materials: [
-        { name: "Mathematics Board Revision", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]},
-      { name: "Biology", materials: [
-        { name: "Biology Board Revision", type: "PDF / Drive", url: "https://drive.google.com/" }
-      ]}
-    ]
-  }
+  { name: "6th Standard", subjects: ["Mathematics", "Science", "English"].map(name => ({ name })) },
+  { name: "7th Standard", subjects: ["Mathematics", "Science", "English"].map(name => ({ name })) },
+  { name: "8th Standard", subjects: ["Mathematics", "Science", "Social Science"].map(name => ({ name })) },
+  { name: "9th Standard", subjects: ["Mathematics", "Science", "Social Science"].map(name => ({ name })) },
+  { name: "10th Standard", subjects: ["Mathematics", "Science", "English"].map(name => ({ name })) },
+  { name: "1st PUC", subjects: ["Physics", "Chemistry", "Mathematics", "Biology"].map(name => ({ name })) },
+  { name: "2nd PUC", subjects: ["Physics", "Chemistry", "Mathematics", "Biology"].map(name => ({ name })) }
 ];
+
 
 createApp({
   setup() {
     const mobileMenu = ref(false);
-    const activeSlide = ref(0);
+
+    // Image gallery state
+    const activeImageSlide = ref(0);
+    let imageTimer = null;
+
+    // Materials state
     const selectedClass = ref(classes[0].name);
     const selectedSubject = ref("");
-
-    let timer = null;
+    const materials = ref([]);
+    const materialsLoading = ref(false);
+    const materialsError = ref("");
 
     const selectedClassObject = computed(() =>
       classes.find(c => c.name === selectedClass.value) || classes[0]
@@ -244,51 +132,109 @@ createApp({
       selectedClassObject.value.subjects || []
     );
 
-    const materialsForSelectedSubject = computed(() => {
-      const subject = subjectsForSelectedClass.value.find(s => s.name === selectedSubject.value);
-      return subject ? subject.materials : [];
+    const materialsForSelectedSubject = computed(() => materials.value);
+
+    const nextImageSlide = () => {
+      if (!galleryImages.length) return;
+      activeImageSlide.value = (activeImageSlide.value + 1) % galleryImages.length;
+    };
+
+    const previousImageSlide = () => {
+      if (!galleryImages.length) return;
+      activeImageSlide.value = (activeImageSlide.value - 1 + galleryImages.length) % galleryImages.length;
+    };
+
+    const goToImageSlide = (index) => {
+      activeImageSlide.value = index;
+    };
+
+    const startImageGallery = () => {
+      if (imageTimer || galleryImages.length <= 1) return;
+      imageTimer = setInterval(nextImageSlide, 4500);
+    };
+
+    const pauseImageGallery = () => {
+      clearInterval(imageTimer);
+      imageTimer = null;
+    };
+
+    const resetImageGallery = () => {
+      activeImageSlide.value = 0;
+    };
+
+    const downloadUrl = (material) => {
+      if (!material.fileId) return "";
+      return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(material.fileId)}`;
+    };
+
+    const normalizeMaterial = (item) => ({
+      className: item.Class ?? item.class ?? "",
+      subject: item.Subject ?? item.subject ?? "",
+      name: item.Topic ?? item.topic ?? "Study Material",
+      url: item["Material Link"] ?? item.materialLink ?? item.url ?? "",
+      fileId: item["File Id"] ?? item["File ID"] ?? item.fileId ?? ""
     });
 
-    const nextSlide = () => {
-      activeSlide.value = (activeSlide.value + 1) % gallery.length;
-    };
+    const fetchMaterials = async () => {
+      const apiClass = classApiValues[selectedClass.value] || selectedClass.value;
+      const subject = selectedSubject.value;
 
-    const previousSlide = () => {
-      activeSlide.value = (activeSlide.value - 1 + gallery.length) % gallery.length;
-    };
+      materials.value = [];
+      materialsError.value = "";
+      materialsLoading.value = true;
 
-    const goToSlide = (index) => {
-      activeSlide.value = index;
-    };
+      try {
+        const url = `${MATERIALS_API}?class=${encodeURIComponent(apiClass)}&subject=${encodeURIComponent(subject)}`;
+        const response = await fetch(url, { method: "GET" });
 
-    const startGallery = () => {
-      if (timer || gallery.length <= 1) return;
-      timer = setInterval(nextSlide, 4500);
-    };
+        // Only an HTTP status other than exactly 200 is treated as a request failure.
+        // A successful HTTP 200 with zero records should show the Coming Soon state.
+        if (response.status !== 200) {
+          throw new Error(`Request failed (${response.status})`);
+        }
 
-    const pauseGallery = () => {
-      clearInterval(timer);
-      timer = null;
+        const result = await response.json();
+
+        // Do not treat an empty result as an error. The UI will show Coming Soon
+        // whenever the successful response contains no usable material records.
+        materials.value = Array.isArray(result.data)
+          ? result.data.map(normalizeMaterial).filter(item => item.name || item.url || item.fileId)
+          : [];
+      } catch (error) {
+        console.error("Materials request failed:", error);
+        materialsError.value = "Unable to load materials right now. Please try again.";
+        materials.value = [];
+      } finally {
+        materialsLoading.value = false;
+      }
     };
 
     const selectClass = (name) => {
       selectedClass.value = name;
       selectedSubject.value = "";
+      materials.value = [];
+      materialsError.value = "";
+      resetImageGallery();
     };
 
     const selectSubject = (name) => {
       selectedSubject.value = name;
+      fetchMaterials();
     };
 
-    onMounted(startGallery);
-    onUnmounted(() => clearInterval(timer));
+    onMounted(startImageGallery);
+    onUnmounted(() => clearInterval(imageTimer));
 
     return {
-      site, gallery, courses, classes, faculty, locations, mobileMenu,
-      activeSlide, selectedClass, selectedSubject,
+      site, galleryImages, galleryVideos, courses, classes, faculty, locations,
+      mobileMenu,
+      activeImageSlide,
+      selectedClass, selectedSubject,
       selectedClassObject, subjectsForSelectedClass, materialsForSelectedSubject,
-      nextSlide, previousSlide, goToSlide, startGallery, pauseGallery,
-      selectClass, selectSubject
+      materialsLoading, materialsError,
+      nextImageSlide, previousImageSlide, goToImageSlide,
+      startImageGallery, pauseImageGallery,
+      selectClass, selectSubject, fetchMaterials, downloadUrl
     };
   }
 }).mount("#app");

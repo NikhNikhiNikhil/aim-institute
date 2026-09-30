@@ -299,3 +299,18 @@ Branches are managed in the `locations` array in `app.js`. Add or remove branche
 Each branch automatically gets its own address, phone, WhatsApp button and Google Maps button.
 
 For WhatsApp numbers, use the country code without `+`, spaces or hyphens.
+
+
+## Dynamic Study Materials API
+
+The Study Materials section now loads data when a class and subject are selected. It requests:
+
+`https://script.google.com/macros/s/AKfycbwJlc1GICnCYIpOrwvO66VEZcWGInuNu2oGBRNx6_O0i1h-wIO2BoirGQV0e8mhalI/exec?class=10&subject=Science`
+
+The frontend expects a JSON response containing `status`, `count`, and `data`. Each material can contain `Topic`, `Material Link`, and `File Id`. When `File Id` is present, the site creates the download URL:
+
+`https://drive.google.com/uc?export=download&id=FILE_ID`
+
+If the selected subject has no records, the site shows a Coming Soon widget. The class-to-API mapping is in `app.js` under `classApiValues`.
+
+> The Apps Script web app must be deployed with access that allows the GitHub Pages visitors to call it. Browser cross-origin restrictions are controlled by the Apps Script deployment/response; if the browser reports a CORS error, the Apps Script endpoint needs to be configured to support browser cross-origin/JSONP access.
